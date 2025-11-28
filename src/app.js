@@ -15,7 +15,7 @@ app.get('/user', async (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-  res.send('This is profile page');
+  res.send('Profile Page');
 });
 
 app.get('/', (req, res) => {
