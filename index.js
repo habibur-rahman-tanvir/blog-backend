@@ -10,5 +10,3 @@ await connectDatabase();
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
-
-export default app;
