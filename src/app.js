@@ -14,6 +14,10 @@ app.get('/user', async (req, res) => {
   res.json(await User.find().lean());
 });
 
+app.get('/profile', (req, res) => {
+  res.send('This is profile page');
+});
+
 app.get('/', (req, res) => {
   res.send('This is home page');
 });
