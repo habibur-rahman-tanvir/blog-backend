@@ -1,29 +1,18 @@
 /* eslint-disable import/extensions */
 import express from 'express';
-import User from './model/user.model.js';
+import authRouter from './routes/authRouter.js';
 
 const app = express();
 app.use(express.json());
 
-app.post('/user', async (req, res) => {
-  const user = await User.create(req.body);
-  res.status(201).json(user);
-});
+app.use('/api/auth', authRouter);
 
-app.get('/user', async (req, res) => {
-  res.json(await User.find().lean());
-});
-
-app.get('/profile', (req, res) => {
-  res.send('Profile Page');
-});
-
-app.get('/', (req, res) => {
-  res.send('This is home page');
-});
-
-app.use((req, res) => {
-  res.send('404- Not found');
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.log(`Error: ${err}`);
+  res.status(500).json({
+    error: 'An error occurred',
+  });
 });
 
 export default app;
