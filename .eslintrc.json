@@ -14,6 +14,8 @@
     "linebreak-style": 0,
     "no-unused-vars": "warn",
     "unused-imports/no-unused-imports": "off",
+    "import/extensions": "off",
+    "consistent-return": "off",
     "prettier/prettier": [
       "error",
       {

@@ -3,11 +3,32 @@ import mongoose, { Schema } from 'mongoose';
 
 const userSchema = new Schema(
   {
-    name: String,
-    age: Number,
+    fullname: {
+      type: String,
+      required: [true, 'fullname required'],
+      minLength: [3, 'fullname too short'],
+      maxLength: [32, 'fullname too long'],
+    },
+    email: {
+      type: String,
+      required: [true, 'email required'],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, 'password required'],
+      minLength: [8, 'password too short'],
+      maxLength: [32, 'password too long'],
+    },
+    role: {
+      type: String,
+      enum: ['admin', 'user'],
+      default: 'user',
+    },
   },
   {
     versionKey: false,
+    timestamps: true,
   }
 );
 
