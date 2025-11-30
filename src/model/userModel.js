@@ -7,7 +7,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'fullname required'],
       minLength: [3, 'fullname too short'],
-      maxLength: [32, 'fullname too long'],
+      maxLength: [100, 'fullname too long'],
     },
     email: {
       type: String,
@@ -18,7 +18,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'password required'],
       minLength: [8, 'password too short'],
-      maxLength: [32, 'password too long'],
+      maxLength: [72, 'password too long'],
     },
     role: {
       type: String,
