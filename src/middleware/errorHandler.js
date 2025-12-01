@@ -4,13 +4,18 @@ import ValidationError from '../errors/validationError.js';
 
 /* eslint-disable no-param-reassign */
 const globalErrorHandler = (err, req, res, next) => {
-  // console.error(err);
+  // const errorCopy = structuredClone(err);
+
   if (err.name === 'ValidationError') {
     err = new ValidationError(err);
   }
 
   if (err.code === 11000) {
     err = new DuplicatError(err);
+  }
+
+  if (err.debug) {
+    console.error(err);
   }
 
   err.statusCode = err.statusCode || 500;

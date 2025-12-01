@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import mongoose from 'mongoose';
 
-export const connectDatabase = async () => {
+const connectDatabase = async () => {
   try {
     await mongoose.connect(process.env.DATABASE_URI);
     console.log('Database connected');
@@ -9,3 +9,5 @@ export const connectDatabase = async () => {
     console.log("[ERROR] Database can't connect: ", err.message);
   }
 };
+
+export { connectDatabase };

@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import User from '../model/userModel.js';
 
 const signupController = async (req, res) => {
