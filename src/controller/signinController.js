@@ -16,7 +16,10 @@ const signinController = async (req, res) => {
     role: user.role,
   };
 
-  res.json({ status: 'success', message: 'Signin successful' });
+  res.json({
+    status: 'success',
+    message: 'Signin successful',
+  });
 };
 
 export default signinController;

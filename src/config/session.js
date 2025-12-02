@@ -4,6 +4,7 @@ import 'dotenv/config';
 
 const mongoStore = MongoStore.create({
   mongoUrl: process.env.DATABASE_URI,
+  autoRemove: 'native',
 });
 
 const sessionMiddleware = session({
@@ -12,8 +13,9 @@ const sessionMiddleware = session({
   store: mongoStore,
   resave: false,
   saveUninitialized: false,
+  rolling: true,
   cookie: {
-    maxAge: 1000 * 30,
+    maxAge: 1000 * 60 * 5,
     httpOnly: true,
     secure: false,
     priority: 'high',
