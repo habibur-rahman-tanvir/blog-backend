@@ -9,6 +9,8 @@ const setRateLimit = (limit = 100, minute = 15, message = 'Rate limit reached') 
       status: 'fail',
       message,
     },
+    standardHeaders: true,
+    legacyHeaders: false,
   });
 };
 
