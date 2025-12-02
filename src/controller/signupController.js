@@ -1,7 +1,12 @@
 import User from '../model/userModel.js';
 
 const signupController = async (req, res) => {
-  const user = await User.create({ ...req.body, role: 'user' });
+  const user = await User.create({
+    fullname: req.body?.fullname,
+    email: req.body?.email,
+    password: req.body?.password,
+  });
+
   res.status(201).json({
     status: 'success',
     message: 'user created successfully',

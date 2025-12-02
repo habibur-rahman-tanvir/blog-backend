@@ -15,7 +15,7 @@ const sessionMiddleware = session({
   saveUninitialized: false,
   rolling: true,
   cookie: {
-    maxAge: 1000 * 60 * 5,
+    maxAge: 1000 * 60 * 60 * 1, // 1 hour session expire
     httpOnly: true,
     secure: false,
     priority: 'high',
