@@ -1,18 +1,17 @@
-/* eslint-disable import/extensions */
+/* eslint-disable comma-dangle */
 import express from 'express';
 import authRouter from './routes/authRouter.js';
+import globalErrorHandler from './middleware/errorHandler.js';
+import sessionMiddleware from './config/session.js';
+import profileRouter from './routes/profileRouter.js';
 
 const app = express();
 app.use(express.json());
+app.use(sessionMiddleware);
 
 app.use('/api/auth', authRouter);
+app.use('/api/profile', profileRouter);
 
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  console.log(`Error: ${err}`);
-  res.status(500).json({
-    error: 'An error occurred',
-  });
-});
+app.use(globalErrorHandler);
 
 export default app;
