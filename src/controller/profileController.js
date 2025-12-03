@@ -1,7 +1,7 @@
 import BaseError from '../errors/BaseError.js';
 import User from '../model/userModel.js';
 
-const profileController = async (req, res) => {
+export const profileInfo = async (req, res) => {
   const user = await User.findById(req.session.user._id)
     .select('fullname email role isVerified')
     .lean();
@@ -9,4 +9,6 @@ const profileController = async (req, res) => {
   res.json(user);
 };
 
-export default profileController;
+export const profilePosts = async (req, res) => {
+  res.send('All post from your profile');
+};
