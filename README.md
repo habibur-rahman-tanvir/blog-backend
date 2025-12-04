@@ -5,12 +5,16 @@
 ## 📌 Base URL
 
 ```
-http://localhost:5000
+private
 ```
 
 ---
 
-## 🚀 Signup User
+# [🔴🔴] Authentication
+
+This section describe how to create user, login user and logout user.
+
+## 👉 Create user
 
 ### ➤ Endpoint
 
@@ -18,7 +22,7 @@ http://localhost:5000
 POST /api/auth/signup
 ```
 
-### 📥 Request Body
+### Request Body
 
 Send data as **JSON**:
 
@@ -30,7 +34,7 @@ Send data as **JSON**:
 }
 ```
 
-### ✅ Validation Rules
+### Validation Rules
 
 | Field    | Rules                                                      |
 | -------- | ---------------------------------------------------------- |
@@ -39,7 +43,7 @@ Send data as **JSON**:
 | password | Required, Minimum 8 characters, Maximum 72 characters      |
 
 
-### 📤 Success Response
+### Success Response
 
 #### ✅ Status Code: `201 Created`
 
@@ -51,7 +55,7 @@ Send data as **JSON**:
 }
 ```
 
-### ❌ Validation Error Response
+### Validation Error Response
 
 #### ❌ Status Code: `400 Bad Request`
 
@@ -84,7 +88,7 @@ Send data as **JSON**:
 | message | Exact reason of failure             |
 
 
-### 🚫 Duplicate Email Error
+### Duplicate Email Error
 
 When trying with an already used email:
 
@@ -104,34 +108,33 @@ When trying with an already used email:
 }
 ```
 
-### 🧪 Example using Fetch (Frontend)
+## 👉 Login user
 
-```js
-fetch("http://localhost:5000/api/auth/signup", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    fullname: "Habibur Rahman",
-    email: "habibur@gmail.com",
-    password: "12345678"
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if(data.status === "success") {
-    console.log(data.message);
-  }
-});
+### ➤ Endpoint
+
+```
+POST /api/auth/signin
 ```
 
----
+### Request Body
 
-## 🧠 Notes for Frontend Developer
+Send data as **JSON**:
 
-✅ Always validate before sending request
+```json
+{
+  "email": "habibur@example.com",
+  "password": "12345678"
+}
+```
 
-✅ Show errors
+## 👉 Logout user
 
-✅ Match input name with backend `field` name
+### ➤ Endpoint
+
+```
+POST /api/auth/signout
+```
+
+### Request Body
+
+No need request body.
