@@ -27,6 +27,10 @@ const userSchema = new Schema(
       enum: ['admin', 'user'],
       default: 'user',
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     versionKey: false,

@@ -1,12 +1,11 @@
 import express from 'express';
-import signupController from '../controller/signupController.js';
-import signinController from '../controller/signinController.js';
-import signoutController from '../controller/signoutController.js';
+import setRateLimit from '../middleware/rateLimit.js';
+import { createUser, loginUser, logoutUser } from '../controller/authController.js';
 
 const router = express.Router();
 
-router.post('/signup', signupController);
-router.post('/signin', signinController);
-router.post('/signout', signoutController);
+router.post('/signup', setRateLimit(5, 60), createUser);
+router.post('/signin', setRateLimit(3, 12), loginUser);
+router.post('/signout', logoutUser);
 
 export default router;

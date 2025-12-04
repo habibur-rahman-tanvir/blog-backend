@@ -1,10 +1,16 @@
 import express from 'express';
-import isAuth from '../middleware/isAuth.js';
+import {
+  createBlog,
+  deleteBlog,
+  getAllBlog,
+  profileInfo,
+} from '../controller/profileController.js';
 
 const router = express.Router();
 
-router.get('/', isAuth, (req, res) => {
-  res.send('Profile');
-});
+router.post('/blog', createBlog);
+router.get('/blog', getAllBlog);
+router.delete('/blog/:blogId', deleteBlog);
+router.get('/', profileInfo);
 
 export default router;

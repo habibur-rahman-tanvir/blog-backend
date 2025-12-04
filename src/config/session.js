@@ -4,18 +4,19 @@ import 'dotenv/config';
 
 const mongoStore = MongoStore.create({
   mongoUrl: process.env.DATABASE_URI,
+  dbName: 'auth-database',
   autoRemove: 'native',
 });
 
 const sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'zQPAL8kUWE',
   name: 'blog.sid',
   store: mongoStore,
   resave: false,
   saveUninitialized: false,
   rolling: true,
   cookie: {
-    maxAge: 1000 * 60 * 5,
+    maxAge: 1000 * 60 * 60 * 24, // 24 hour session expire
     httpOnly: true,
     secure: false,
     priority: 'high',
