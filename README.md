@@ -10,7 +10,9 @@ http://localhost:5000
 
 ---
 
-## 🚀 Signup User
+# Authentication
+
+## Signup User
 
 ### ➤ Endpoint
 
