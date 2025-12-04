@@ -4,6 +4,7 @@ import 'dotenv/config';
 
 const mongoStore = MongoStore.create({
   mongoUrl: process.env.DATABASE_URI,
+  dbName: 'auth-database',
   autoRemove: 'native',
 });
 

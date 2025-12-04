@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import mongoose, { Schema } from 'mongoose';
 
-const postSchema = new Schema(
+const blogSchema = new Schema(
   {
     tittle: {
       type: String,
@@ -29,6 +29,6 @@ const postSchema = new Schema(
   }
 );
 
-const Post = mongoose.model('Post', postSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
-export default Post;
+export default Blog;
