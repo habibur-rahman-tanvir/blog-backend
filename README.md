@@ -121,7 +121,7 @@ const handleSignup = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",  // Including credentials is crutials for session login
+      credentials: "include",  // Including credentials is required for session login
       body: JSON.stringify({
 
         fullname: "Habibur Rahman",
@@ -179,6 +179,7 @@ const handleLogin = async () => {
 
   const data = await res.json();
   console.log(data);
+
 };
 ```
 
@@ -207,7 +208,7 @@ const handleLogin = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: "tanvir@gmail.com",
+      email: "habibur@gmail.com",
       password: "12345678",
     }),
   });
@@ -219,6 +220,7 @@ const handleLogin = async () => {
 <br>
 
 <h1 align="center">Profile</h1>
+Under the api/profile route, every request need credentials
 
 ## 👉 Basic profile info
 
@@ -240,4 +242,17 @@ GET /api/profile
    "role": "user",
    "isVerified": false
 }
+```
+
+### ✅ Example code: 
+```js
+  const handleProfileInfo = async () => {
+    const res = await fetch(`${baseUrl}/api/profile`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    console.log(JSON.stringify(data, null, 3));
+  };
 ```
