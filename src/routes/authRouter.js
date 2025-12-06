@@ -5,7 +5,7 @@ import { createUser, loginUser, logoutUser } from '../controller/authController.
 const router = express.Router();
 
 router.post('/signup', setRateLimit(5, 60), createUser);
-router.post('/signin', setRateLimit(3, 12), loginUser);
+router.post('/signin', loginUser);
 router.post('/signout', logoutUser);
 
 export default router;
