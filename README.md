@@ -164,17 +164,19 @@ Send data as **JSON**:
 const baseUrl = "";  // Add base url from backend developer
 
 const handleLogin = async () => {
+
   const res = await fetch(`${baseUrl}/api/auth/signin`, {
     method: "POST",
     credentials: "include",
     headers: {
-      "Content-Type": "application/json;charset=utf-8",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email: "tanvir@gmail.com",
       password: "12345678",
     }),
   });
+
   const data = await res.json();
   console.log(data);
 };
@@ -191,3 +193,51 @@ POST /api/auth/signout
 ### ✅ Request Body
 
 No need request body.
+
+### ✅ Example code: 
+```js
+const baseUrl = "";  // Add base url from backend developer
+
+const handleLogin = async () => {
+
+  const res = await fetch(`${baseUrl}/api/auth/signin`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: "tanvir@gmail.com",
+      password: "12345678",
+    }),
+  });
+
+  const data = await res.json();
+  console.log(data);
+};
+```
+<br>
+
+<h1 align="center">Profile</h1>
+
+## 👉 Basic profile info
+
+### ✅ Endpoint
+
+```
+GET /api/profile
+```
+
+### ✅ Success Response
+
+#### Status Code: `200 OK`
+
+```json
+{
+   "_id": "xxxxxxxxxxxxxxxxxxxxxxxx",
+   "fullname": "Habibur Rahman",
+   "email": "habibur@gmail.com",
+   "role": "user",
+   "isVerified": false
+}
+```
