@@ -3,7 +3,6 @@ import User from '../model/userModel.js';
 import Blog from '../model/blogModel.js';
 
 export const createBlog = async (req, res) => {
-  console.log(req.session.user);
   const body = req.body || {};
   const post = await Blog.create({
     tittle: body.tittle,
@@ -34,6 +33,7 @@ export const deleteBlog = async (req, res) => {
 };
 
 export const profileInfo = async (req, res) => {
+  console.log(req.session.user);
   const user = await User.findById(req.session.user._id)
     .select('fullname email role isVerified')
     .lean();
