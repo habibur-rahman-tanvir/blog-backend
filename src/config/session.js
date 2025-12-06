@@ -10,7 +10,6 @@ const mongoStore = MongoStore.create({
 
 const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET || 'zQPAL8kUWE',
-  name: 'blog.sid',
   store: mongoStore,
   resave: false,
   saveUninitialized: false,
@@ -18,7 +17,8 @@ const sessionMiddleware = session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24, // 24 hour session expire
     httpOnly: false,
-    secure: false,
+    secure: true,
+    sameSite: 'none',
   },
 });
 
