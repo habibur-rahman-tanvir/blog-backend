@@ -121,13 +121,13 @@ const handleSignup = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",  // Including credentials is required for session login
+      credentials: "include",  // Including credentials is crutials for session login
       body: JSON.stringify({
 
         fullname: "Habibur Rahman",
         email: "habibur@gmail.com",
         password: "12345678"
-        
+
       }),
     });
 
@@ -157,6 +157,27 @@ Send data as **JSON**:
   "email": "habibur@example.com",
   "password": "12345678"
 }
+```
+
+### ✅ Example code: 
+```js
+const baseUrl = "";  // Add base url from backend developer
+
+const handleLogin = async () => {
+  const res = await fetch(`${baseUrl}/api/auth/signin`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      email: "tanvir@gmail.com",
+      password: "12345678",
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+};
 ```
 
 ## 👉 Logout user
