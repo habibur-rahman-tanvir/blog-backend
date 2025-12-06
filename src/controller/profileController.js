@@ -33,6 +33,7 @@ export const deleteBlog = async (req, res) => {
 };
 
 export const profileInfo = async (req, res) => {
+  console.log(req.session.user);
   const user = await User.findById(req.session.user._id)
     .select('fullname email role isVerified')
     .lean();
