@@ -10,19 +10,19 @@ private
 
 ---
 
-# [🔴🔴] Authentication
+<h1 align="center">Authentication</h1>
 
 This section describe how to create user, login user and logout user.
 
 ## 👉 Create user
 
-### ➤ Endpoint
+### ✅ Endpoint
 
 ```
 POST /api/auth/signup
 ```
 
-### Request Body
+### ✅ Request Body
 
 Send data as **JSON**:
 
@@ -34,7 +34,7 @@ Send data as **JSON**:
 }
 ```
 
-### Validation Rules
+### ✅ Validation Rules
 
 | Field    | Rules                                                      |
 | -------- | ---------------------------------------------------------- |
@@ -43,9 +43,9 @@ Send data as **JSON**:
 | password | Required, Minimum 8 characters, Maximum 72 characters      |
 
 
-### Success Response
+### ✅ Success Response
 
-#### ✅ Status Code: `201 Created`
+#### Status Code: `201 Created`
 
 ```json
 {
@@ -55,9 +55,9 @@ Send data as **JSON**:
 }
 ```
 
-### Validation Error Response
+### ✅ Validation Error Response
 
-#### ❌ Status Code: `400 Bad Request`
+#### Status Code: `400 Bad Request`
 
 ```json
 {
@@ -79,7 +79,7 @@ Send data as **JSON**:
 ```
 
 
-### Error Fields Explained
+### ✅ Error Fields Explained
 
 | Key     | Description                         |
 | ------- | ----------------------------------- |
@@ -88,11 +88,11 @@ Send data as **JSON**:
 | message | Exact reason of failure             |
 
 
-### Duplicate Email Error
+### ✅ Duplicate Email Error
 
 When trying with an already used email:
 
-#### ❌ Status Code: `409 Conflict`
+#### Status Code: `409 Conflict`
 
 ```json
 {
@@ -110,13 +110,13 @@ When trying with an already used email:
 
 ## 👉 Login user
 
-### ➤ Endpoint
+### ✅ Endpoint
 
 ```
 POST /api/auth/signin
 ```
 
-### Request Body
+### ✅ Request Body
 
 Send data as **JSON**:
 
@@ -129,12 +129,12 @@ Send data as **JSON**:
 
 ## 👉 Logout user
 
-### ➤ Endpoint
+### ✅ Endpoint
 
 ```
 POST /api/auth/signout
 ```
 
-### Request Body
+### ✅ Request Body
 
 No need request body.
