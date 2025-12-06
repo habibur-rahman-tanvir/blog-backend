@@ -3,6 +3,7 @@ import User from '../model/userModel.js';
 import Blog from '../model/blogModel.js';
 
 export const createBlog = async (req, res) => {
+  console.log(req.session.user);
   const body = req.body || {};
   const post = await Blog.create({
     tittle: body.tittle,

@@ -33,6 +33,7 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
+  console.log(req.session.user);
   req.session.destroy((err) => {
     if (err) throw new BaseError('Signout failed', 500);
     return res.json({
