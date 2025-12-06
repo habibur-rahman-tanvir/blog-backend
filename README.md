@@ -108,6 +108,38 @@ When trying with an already used email:
 }
 ```
 
+### ✅ Examle:
+
+```javascript
+const baseUrl = "";  // Add base url from backend developer
+
+const handleSignup = async () => {
+  try {
+
+    const res = await fetch(`${baseUrl}/api/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",  // Including credentials is required for session login
+      body: JSON.stringify({
+
+        fullname: "Habibur Rahman",
+        email: "habibur@gmail.com",
+        password: "12345678"
+        
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+  } catch (err) {
+    console.log(err);
+  }
+};
+```
+
 ## 👉 Login user
 
 ### ✅ Endpoint
