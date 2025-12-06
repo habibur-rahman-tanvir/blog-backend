@@ -5,20 +5,24 @@
 ## 📌 Base URL
 
 ```
-http://localhost:5000
+private
 ```
 
 ---
 
-## 🚀 Signup User
+<h1 align="center">Authentication</h1>
 
-### ➤ Endpoint
+This section describe how to create user, login user and logout user.
+
+## 👉 Create user
+
+### ✅ Endpoint
 
 ```
 POST /api/auth/signup
 ```
 
-### 📥 Request Body
+### ✅ Request Body
 
 Send data as **JSON**:
 
@@ -39,9 +43,9 @@ Send data as **JSON**:
 | password | Required, Minimum 8 characters, Maximum 72 characters      |
 
 
-### 📤 Success Response
+### ✅ Success Response
 
-#### ✅ Status Code: `201 Created`
+#### Status Code: `201 Created`
 
 ```json
 {
@@ -51,9 +55,9 @@ Send data as **JSON**:
 }
 ```
 
-### ❌ Validation Error Response
+### ✅ Validation Error Response
 
-#### ❌ Status Code: `400 Bad Request`
+#### Status Code: `400 Bad Request`
 
 ```json
 {
@@ -75,7 +79,7 @@ Send data as **JSON**:
 ```
 
 
-### Error Fields Explained
+### ✅ Error Fields Explained
 
 | Key     | Description                         |
 | ------- | ----------------------------------- |
@@ -84,11 +88,11 @@ Send data as **JSON**:
 | message | Exact reason of failure             |
 
 
-### 🚫 Duplicate Email Error
+### ✅ Duplicate Email Error
 
 When trying with an already used email:
 
-#### ❌ Status Code: `409 Conflict`
+#### Status Code: `409 Conflict`
 
 ```json
 {
@@ -104,34 +108,151 @@ When trying with an already used email:
 }
 ```
 
-### 🧪 Example using Fetch (Frontend)
+### ✅ Examle:
 
-```js
-fetch("http://localhost:5000/api/auth/signup", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    fullname: "Habibur Rahman",
-    email: "habibur@gmail.com",
-    password: "12345678"
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if(data.status === "success") {
-    console.log(data.message);
+```javascript
+const baseUrl = "";  // Add base url from backend developer
+
+const handleSignup = async () => {
+  try {
+
+    const res = await fetch(`${baseUrl}/api/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",  // Including credentials is required for session login
+      body: JSON.stringify({
+
+        fullname: "Habibur Rahman",
+        email: "habibur@gmail.com",
+        password: "12345678"
+
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+  } catch (err) {
+    console.log(err);
   }
-});
+};
 ```
 
----
+## 👉 Login user
 
-## 🧠 Notes for Frontend Developer
+### ✅ Endpoint
 
-✅ Always validate before sending request
+```
+POST /api/auth/signin
+```
 
-✅ Show errors
+### ✅ Request Body
 
-✅ Match input name with backend `field` name
+Send data as **JSON**:
+
+```json
+{
+  "email": "habibur@example.com",
+  "password": "12345678"
+}
+```
+
+### ✅ Example code: 
+```js
+const baseUrl = "";  // Add base url from backend developer
+
+const handleLogin = async () => {
+
+  const res = await fetch(`${baseUrl}/api/auth/signin`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: "tanvir@gmail.com",
+      password: "12345678",
+    }),
+  });
+
+  const data = await res.json();
+  console.log(data);
+
+};
+```
+
+## 👉 Logout user
+
+### ✅ Endpoint
+
+```
+POST /api/auth/signout
+```
+
+### ✅ Request Body
+
+No need request body.
+
+### ✅ Example code: 
+```js
+const baseUrl = "";  // Add base url from backend developer
+
+const handleLogin = async () => {
+
+  const res = await fetch(`${baseUrl}/api/auth/signin`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: "habibur@gmail.com",
+      password: "12345678",
+    }),
+  });
+
+  const data = await res.json();
+  console.log(data);
+};
+```
+<br>
+
+<h1 align="center">Profile</h1>
+Under the api/profile route, every request need credentials
+
+## 👉 Basic profile info
+
+### ✅ Endpoint
+
+```
+GET /api/profile
+```
+
+### ✅ Success Response
+
+#### Status Code: `200 OK`
+
+```json
+{
+   "_id": "xxxxxxxxxxxxxxxxxxxxxxxx",
+   "fullname": "Habibur Rahman",
+   "email": "habibur@gmail.com",
+   "role": "user",
+   "isVerified": false
+}
+```
+
+### ✅ Example code: 
+```js
+  const handleProfileInfo = async () => {
+    const res = await fetch(`${baseUrl}/api/profile`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    console.log(JSON.stringify(data, null, 3));
+  };
+```
