@@ -1,7 +1,7 @@
 import cors from 'cors';
 import BaseError from '../errors/BaseError.js';
 
-const whitelist = [undefined, 'http://localhost:8080', 'http://localhost:5173'];
+const whitelist = [undefined, 'http://localhost:5173'];
 
 const corsMiddleware = cors({
   origin: (origin, callback) => {
