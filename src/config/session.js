@@ -10,7 +10,6 @@ const mongoStore = MongoStore.create({
 
 const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET || 'zQPAL8kUWE',
-  name: 'blog.sid',
   store: mongoStore,
   resave: false,
   saveUninitialized: false,
