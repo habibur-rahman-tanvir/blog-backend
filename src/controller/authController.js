@@ -33,9 +33,10 @@ export const loginUser = async (req, res) => {
 };
 
 export const logoutUser = async (req, res) => {
-  console.log(req.session.user);
+  // console.log(req.session.cookie);
   req.session.destroy((err) => {
     if (err) throw new BaseError('Signout failed', 500);
+    res.clearCookie('connect.sid');
     return res.json({
       status: 'success',
       message: 'Signout successful',
