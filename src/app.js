@@ -10,7 +10,7 @@ import corsMiddleware from './middleware/cors.js';
 
 const app = express();
 
-// app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 app.use(cookieParser());
 app.use((req, res, next) => {
   console.log('COOKIES:', JSON.stringify(req.cookies, null, 2));
