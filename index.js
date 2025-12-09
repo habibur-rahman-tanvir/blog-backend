@@ -5,8 +5,8 @@ import app from './src/app.js';
 import 'dotenv/config';
 import { connectDatabase } from './src/config/db.js';
 
-const key = fs.readFileSync('./src/certificate/key.pem');
-const cert = fs.readFileSync('./src/certificate/cert.pem');
+const key = fs.readFileSync('./src/certificate/localhost+2-key.pem');
+const cert = fs.readFileSync('./src/certificate/localhost+2.pem');
 
 const PORT = process.env.PORT || 3000;
 
