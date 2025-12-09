@@ -5,8 +5,8 @@ import app from './src/app.js';
 import 'dotenv/config';
 import { connectDatabase } from './src/config/db.js';
 
-const key = fs.readFileSync('./src/certificate/localhost+2-key.pem');
-const cert = fs.readFileSync('./src/certificate/localhost+2.pem');
+const key = fs.readFileSync('./src/certificate/localhost-key.pem');
+const cert = fs.readFileSync('./src/certificate/localhost.pem');
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,7 +14,7 @@ await connectDatabase();
 
 if (process.env.NODE_ENV === 'production') {
   app.listen(PORT, () => {
-    console.log(`Server(production) running at http://localhost:${PORT}`);
+    console.log(`Server(production) running at PORT: ${PORT}`);
   });
 } else {
   const server = https.createServer({ key, cert }, app);
