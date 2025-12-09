@@ -29,6 +29,7 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.2.1",
     "express-session": "^1.18.2",
+    "mkcert": "^3.2.0",
     "mongoose": "^9.0.0"
   },
   "devDependencies": {
