@@ -14,11 +14,11 @@ await connectDatabase();
 
 if (process.env.NODE_ENV === 'production') {
   app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server(production) running at http://localhost:${PORT}`);
   });
 } else {
   const server = https.createServer({ key, cert }, app);
   server.listen(PORT, () => {
-    console.log(`Server running at https://localhost:${PORT}`);
+    console.log(`Server(development) running at https://localhost:${PORT}`);
   });
 }
