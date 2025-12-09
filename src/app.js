@@ -7,13 +7,11 @@ import sessionMiddleware from './config/session.js';
 import profileRouter from './routes/profileRouter.js';
 import isAuth from './middleware/isAuth.js';
 import corsMiddleware from './middleware/cors.js';
-import cookiePrint from './utils/cookisPrint.js';
 
 const app = express();
 
 // app.set('trust proxy', 1);
 app.use(cookieParser());
-app.use(cookiePrint);
 
 app.use(corsMiddleware);
 app.use(express.json());

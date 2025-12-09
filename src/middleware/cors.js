@@ -5,10 +5,10 @@ const whitelist = [undefined, 'http://localhost:5173', 'https://localhost:5173']
 
 const corsMiddleware = cors({
   origin: (origin, callback) => {
-    console.log('ORIGIN:', origin);
     if (whitelist.length === 0 || whitelist.includes(origin)) {
       callback(null, true);
     } else {
+      console.log('BLOCKED_ORIGIN:', origin);
       callback(new BaseError('Not allowed by CORS'));
     }
   },
